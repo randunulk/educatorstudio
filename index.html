@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educator Studios | Your Content Partner</title>
+    <link rel="icon" href="images/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --glow-color: theme('colors.blue.500');
+        }
+        html.dark {
+            --glow-color: theme('colors.blue.400');
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-brand {
+            font-family: 'Poppins', sans-serif;
+        }
+        .section-headline {
+            @apply text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white;
+        }
+        .section-subheadline {
+            @apply mt-6 max-w-3xl mx-auto text-lg text-slate-600 dark:text-slate-400;
+        }
+        .feature-card {
+            @apply bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 p-8 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-blue-500/50 dark:hover:border-blue-400/50;
+        }
+        .reveal {
+            position: relative;
+            transform: translateY(100px) scale(0.95);
+            opacity: 0;
+            transition: 1s all ease;
+        }
+        .reveal.active {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+        .faq-answer {
+            transition: all 0.5s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 1.5rem;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 200px; /* Large value to ensure it fits content */
+            padding: 0 1.5rem 1.5rem 1.5rem;
+        }
+        .faq-question.active {
+            @apply bg-slate-100 dark:bg-slate-800;
+        }
+        .comparison-table-container {
+             transition: all 0.5s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        .comparison-table-container.open {
+            max-height: 1000px; /* Large value to ensure it fits content */
+        }
+        .comparison-toggle.open .toggle-icon {
+            transform: rotate(180deg);
+        }
+        #hero-gradient {
+            transition: background 0.3s ease-out;
+        }
+        .typing-indicator span {
+            display: inline-block;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
+    </style>
+</head>
+<body class="antialiased bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200">
+
+    <!-- Header -->
+    <header class="bg-white/70 dark:bg-slate-950/70 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="flex items-center gap-3">
+                     <img src="images/logo.png" alt="Educator Studios Logo" class="h-8 w-auto">
+                    <div>
+                        <span class="font-brand text-xl font-bold text-slate-900 dark:text-white">Educator Studios</span>
+                    </div>
+                </a>
+                <div class="flex items-center gap-4">
+                    <div class="hidden md:flex items-center gap-8">
+                        <a href="#process" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Our Process</a>
+                        <a href="#work" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Our Work</a>
+                        <a href="#packages" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Packages</a>
+                    </div>
+                    <button id="theme-toggle" class="p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+                        <i id="theme-icon" data-lucide="sun" class="w-5 h-5"></i>
+                    </button>
+                    <a href="https://wa.me/94703734000?text=Hi%2C%20Randunu.%20I'm%20interested%20in%20Educator%20Studios%20and%20would%20like%20to%20book%20a%20free%20consultation%20to%20discuss%20my%20goals." target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors text-sm shadow-lg shadow-blue-500/20">Book a Free Consultation</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Hero Section -->
+        <section class="relative py-32 sm:py-48 text-center px-4 overflow-hidden dark:bg-slate-900">
+            <div id="hero-gradient" class="absolute inset-0 z-10"></div>
+            <div class="relative z-20">
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tighter text-slate-900 dark:text-white">Focus on What You Do Best:<br><span class="text-blue-600 dark:text-blue-400">Teach.</span></h1>
+                <p class="mt-8 max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-300">We handle the entire video production and content strategy, transforming your expertise into a professional online brand, so you can focus on what truly matters—your students.</p>
+                <a href="#packages" class="mt-10 inline-block bg-slate-900 hover:bg-black dark:bg-white dark:hover:bg-slate-200 text-white dark:text-slate-900 font-bold py-4 px-10 rounded-lg transition-all duration-300 text-lg shadow-2xl shadow-slate-900/20 dark:shadow-white/10 transform hover:scale-105">View Our Packages</a>
+            </div>
+        </section>
+
+        <!-- Problem Section -->
+        <section class="py-20 sm:py-28 text-center px-4 reveal">
+            <h2 class="section-headline">You're an Expert Educator.<br>Not a Full-Time Video Producer.</h2>
+            <p class="section-subheadline">You have the knowledge and the passion, but the technical hurdles of creating a professional online presence can be overwhelming. Does this sound familiar?</p>
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 mt-16 text-left">
+                <div class="feature-card flex items-start gap-4">
+                    <i data-lucide="clock" class="w-8 h-8 text-blue-500 flex-shrink-0 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">The Time Sink</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mt-2">Hours spent trying to edit, create thumbnails, and write descriptions could be spent developing your next lesson.</p>
+                    </div>
+                </div>
+                <div class="feature-card flex items-start gap-4">
+                    <i data-lucide="camera-off" class="w-8 h-8 text-blue-500 flex-shrink-0 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">The Technical Overwhelm</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mt-2">Cameras, lighting, audio, software... the learning curve is steep and takes you away from your core expertise.</p>
+                    </div>
+                </div>
+                <div class="feature-card flex items-start gap-4">
+                    <i data-lucide="trending-down" class="w-8 h-8 text-blue-500 flex-shrink-0 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">The Consistency Struggle</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mt-2">Growing online requires a consistent flow of high-quality content, which is nearly impossible to maintain alone.</p>
+                    </div>
+                </div>
+                 <div class="feature-card flex items-start gap-4">
+                    <i data-lucide="award" class="w-8 h-8 text-blue-500 flex-shrink-0 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">The Quality Gap</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mt-2">You know your content is valuable, but you worry the production quality doesn't reflect your professionalism.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- NEW "Our Goal" Section -->
+        <section class="py-20 sm:py-28 text-center px-4 bg-slate-100 dark:bg-slate-900 reveal">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="section-headline">Our Goal Isn't Just to Make Videos.<br>It's to Build Your Legacy.</h2>
+                <p class="section-subheadline">We see our partnership as a three-stage journey, guiding you from your first high-quality video to a thriving online brand with real-world impact.</p>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                    <!-- Stage 1: Crawl -->
+                    <div class="feature-card">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="font-bold text-4xl text-blue-500/30 dark:text-blue-400/30">01</span>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Crawl: The Foundation</h3>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mt-2">In months 1-3, we focus on producing consistent, high-quality content. This builds your channel's foundation and establishes you as a trusted authority.</p>
+                    </div>
+                    <!-- Stage 2: Walk -->
+                    <div class="feature-card">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="font-bold text-4xl text-blue-500/30 dark:text-blue-400/30">02</span>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Walk: The Community</h3>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mt-2">In months 3-6, we use data and insights to refine your content, engage your audience, and build a loyal community that values your expertise.</p>
+                    </div>
+                    <!-- Stage 3: Run -->
+                    <div class="feature-card">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="font-bold text-4xl text-blue-500/30 dark:text-blue-400/30">03</span>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Run: The Monetization</h3>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mt-2">From month 6 onwards, we leverage your brand to launch premium online classes, creating a significant and sustainable new income stream.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Solution & Process Section -->
+        <section id="process" class="py-20 sm:py-28 px-4 reveal">
+            <div class="text-center">
+                <h2 class="section-headline">Our "Concierge" Production Process</h2>
+                <p class="section-subheadline">We've designed a meticulous, high-touch experience that goes far beyond a simple recording session. We are your strategic partner at every step.</p>
+            </div>
+            <div class="max-w-4xl mx-auto mt-20 space-y-4">
+                <!-- Step 1 -->
+                <div class="flex flex-col md:flex-row items-center gap-8 p-8">
+                    <i data-lucide="brain-circuit" class="w-20 h-20 text-blue-500 flex-shrink-0"></i>
+                    <div class="text-center md:text-left">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">1. The Pre-Production Brain Trust</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mt-3">It starts before you even arrive. We conduct a **Content Intelligence Brief** to see what students are searching for, and provide **On-Camera Coaching** to ensure you feel confident and prepared for a session planned around a strategic shot list.</p>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="flex flex-col md:flex-row items-center gap-8 p-8">
+                    <i data-lucide="camera" class="w-20 h-20 text-blue-500 flex-shrink-0"></i>
+                    <div class="text-center md:text-left">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">2. The Studio Experience</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mt-3">You're welcomed into a relaxed, creative, and professional atmosphere. We handle everything—the two-camera setup, glare-free lighting, and broadcast-quality audio. Your job is simply to teach.</p>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="flex flex-col md:flex-row items-center gap-8 p-8">
+                    <i data-lucide="wand-2" class="w-20 h-20 text-blue-500 flex-shrink-0"></i>
+                    <div class="text-center md:text-left">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">3. The Post-Production Engine</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mt-3">This is where we transform your lesson into a library of assets. We edit your main video, master the audio, add branded graphics, and create a suite of Reels, Shorts, and PDF summaries—all from a single recording.</p>
+                    </div>
+                </div>
+                <!-- Step 4 -->
+                <div class="flex flex-col md:flex-row items-center gap-8 p-8">
+                    <i data-lucide="rocket" class="w-20 h-20 text-blue-500 flex-shrink-0"></i>
+                    <div class="text-center md:text-left">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">4. White-Glove Delivery & Partnership</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mt-3">Your assets are delivered via a secure, **Branded Client Portal**. You'll receive our **Weekly Momentum Updates** and, for premium clients, our exclusive **Monthly Impact & Insights Report** to guide your future growth.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work/Portfolio Section -->
+        <section id="work" class="py-20 sm:py-28 px-4 bg-slate-100 dark:bg-slate-900 reveal relative overflow-hidden">
+            <div class="absolute -top-40 -left-40 w-96 h-96 bg-blue-500/20 dark:bg-blue-500/10 rounded-full filter blur-3xl opacity-50"></div>
+            <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-blue-500/20 dark:bg-blue-500/10 rounded-full filter blur-3xl opacity-50"></div>
+            <div class="relative z-10">
+                <div class="text-center">
+                    <h2 class="section-headline">The Proof is in the Production</h2>
+                    <p class="section-subheadline">We partner with some of the most dedicated educators to elevate their online presence. Here is a sample of our work and the results.</p>
+                </div>
+                <div class="max-w-5xl mx-auto mt-16 space-y-20">
+                    <!-- Embedded YouTube Video -->
+                    <div>
+                        <h3 class="text-2xl font-bold text-center mb-6 text-slate-900 dark:text-white">A Sample of Our Final Product</h3>
+                        <div class="aspect-video w-full max-w-4xl mx-auto rounded-lg overflow-hidden border-2 border-slate-200 dark:border-slate-800 shadow-2xl">
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/brKwdeM0vUs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Featured Channels -->
+                    <div>
+                         <h3 class="text-2xl font-bold text-center mb-12 text-slate-900 dark:text-white">Featured Partner Channels</h3>
+                         <div class="grid md:grid-cols-2 gap-12">
+                            <!-- Channel 1 -->
+                            <div class="feature-card text-center flex flex-col items-center">
+                                <a href="https://www.youtube.com/@darshanayasarathna" target="_blank" class="flex items-center gap-4 mb-4">
+                                    <img src="images/darshana-logo.jpg" alt="Darshana Yasarathna profile picture" class="rounded-full w-16 h-16 object-cover">
+                                    <h4 class="text-xl font-bold text-slate-900 dark:text-white">Darshana Yasarathna</h4>
+                                </a>
+                                <p class="text-slate-600 dark:text-slate-400 mt-2">Through powerful SEO, we helped Darshana's channel gain **+40 subscribers** and over **240 watch hours** in a single month—<span class="font-semibold text-blue-600 dark:text-blue-400">even without uploading any new videos.</span></p>
+                            </div>
+                            <!-- Channel 2 -->
+                             <div class="feature-card text-center flex flex-col items-center">
+                                <a href="https://www.youtube.com/@econtopicwithMB" target="_blank" class="flex items-center gap-4 mb-4">
+                                    <img src="images/econ-topic-logo.jpg" alt="Econ Topic with MB profile picture" class="rounded-full w-16 h-16 object-cover">
+                                    <h4 class="text-xl font-bold text-slate-900 dark:text-white">Econ Topic with MB</h4>
+                                </a>
+                                <p class="text-slate-600 dark:text-slate-400 mt-2">Our next-level production quality will help turn this channel's excellent SEO ranking into a highly-engaged community of loyal students.</p>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Packages Section -->
+        <section id="packages" class="py-20 sm:py-28 px-4 reveal">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center">
+                    <h2 class="section-headline">A Plan for Every Creator</h2>
+                    <p class="section-subheadline">Choose the engine that best fits your ambition. Whether you're just starting out or ready to dominate your niche, we have the perfect solution to power your growth.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start mt-16">
+                    <!-- Package 1: Starter Kit -->
+                    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 flex flex-col h-full transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Starter Kit</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mt-2 h-12">The perfect entry point to test the waters with professional content.</p>
+                        <div class="mt-6 text-4xl font-extrabold text-slate-900 dark:text-white">9,000<span class="text-lg font-medium text-slate-500 dark:text-slate-400"> LKR/mo</span></div>
+                        <a href="https://wa.me/94703734000?text=Hi%2C%20Randunu.%20I'm%20interested%20in%20the%20%22Starter%20Kit%22%20package.%20Can%20we%20schedule%20a%20call%20to%20discuss%20it%3F" target="_blank" class="mt-8 w-full text-center bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-900 dark:text-white font-bold py-3 px-6 rounded-lg transition-colors">Get Started</a>
+                        <ul class="mt-8 space-y-4 text-slate-600 dark:text-slate-300 flex-grow">
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-green-500"></i>1 Main YouTube Video /mo</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-green-500"></i>2 Reels/Shorts</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-green-500"></i>Custom Thumbnail</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-green-500"></i>Full SEO & Publishing</li>
+                        </ul>
+                    </div>
+                    <!-- Package 2: Growth Engine (Highlighted) -->
+                    <div class="bg-white dark:bg-slate-900 border-2 border-blue-500 dark:border-blue-400 rounded-2xl p-8 flex flex-col h-full relative transform lg:scale-105 shadow-2xl shadow-blue-500/20">
+                        <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 px-4 py-1 bg-blue-500 dark:bg-blue-400 text-white dark:text-slate-900 font-bold rounded-full text-sm">BEST VALUE</div>
+                        <h3 class="text-2xl font-bold text-blue-600 dark:text-blue-400">Growth Engine</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mt-2 h-12">For the serious educator committed to consistent, organic growth.</p>
+                        <div class="mt-6 text-4xl font-extrabold text-slate-900 dark:text-white">15,000<span class="text-lg font-medium text-slate-500 dark:text-slate-400"> LKR/mo</span></div>
+                        <a href="https://wa.me/94703734000?text=Hi%2C%20Randunu%2C%20we%20want%20to%20work%20with%20you.%20We%20chose%20the%20Growth%20Engine%20package.%20Can%20I%20make%20an%20appointment%20to%20make%20a%20call%3F" target="_blank" class="mt-8 w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">Choose Growth</a>
+                        <ul class="mt-8 space-y-4 text-slate-600 dark:text-slate-300 flex-grow">
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-green-500"></i>4 Main YouTube Videos /mo</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-green-500"></i>10 Reels/Shorts</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-green-500"></i>Lesson Summary PDFs</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-green-500"></i>Weekly Momentum Updates</li>
+                        </ul>
+                    </div>
+                    <!-- Package 3: Brand Builder -->
+                    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 flex flex-col h-full transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Brand Builder</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mt-2 h-12">For the ambitious educator seeking a true strategic partnership.</p>
+                        <div class="mt-6 text-4xl font-extrabold text-slate-900 dark:text-white">25,000<span class="text-lg font-medium text-slate-500 dark:text-slate-400"> LKR/mo</span></div>
+                        <a href="https://wa.me/94703734000?text=Hi%2C%20Randunu.%20I'm%20interested%20in%20the%20%22Brand%20Builder%22%20package%20and%20would%20like%20to%20learn%20more%20about%20the%20strategic%20partnership." target="_blank" class="mt-8 w-full text-center bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-900 dark:text-white font-bold py-3 px-6 rounded-lg transition-colors">Build Your Brand</a>
+                        <ul class="mt-8 space-y-4 text-slate-600 dark:text-slate-300 flex-grow">
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-green-500"></i>Everything in Growth Engine</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-green-500"></i>Monthly Impact Report</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-green-500"></i>Monthly Strategy Call</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-green-500"></i>Community Engagement</li>
+                        </ul>
+                    </div>
+                    <!-- Package 4: Dominator Engine -->
+                    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 flex flex-col h-full transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Dominator Engine</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mt-2 h-12">The ultimate solution to invest in market leadership and accelerated growth.</p>
+                        <div class="mt-6 text-4xl font-extrabold text-slate-900 dark:text-white">45,000<span class="text-lg font-medium text-slate-500 dark:text-slate-400"> LKR/mo</span></div>
+                        <a href="https://wa.me/94703734000?text=Hi%2C%20Randunu.%20I'm%20interested%20in%20the%20%22Dominator%20Engine%22%20package%2C%20including%20the%20digital%20marketing%20services.%20Can%20we%20discuss%20how%20this%20can%20accelerate%20my%20brand's%20growth%3F" target="_blank" class="mt-8 w-full text-center bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-900 dark:text-white font-bold py-3 px-6 rounded-lg transition-colors">Dominate Your Niche</a>
+                        <ul class="mt-8 space-y-4 text-slate-600 dark:text-slate-300 flex-grow">
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-green-500"></i>Everything in Brand Builder</li>
+                            <li class="flex items-center gap-3 font-semibold text-amber-500 dark:text-amber-300"><i data-lucide="zap" class="w-5 h-5 text-amber-500 dark:text-amber-300"></i>Full Digital Marketing Suite</li>
+                        </ul>
+                        <p class="text-xs text-slate-500 mt-4 text-center">+ Ad Spend</p>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                     <button id="comparison-toggle" class="comparison-toggle group inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold">
+                        <span>See Full Feature Comparison</span>
+                        <i data-lucide="chevron-down" class="toggle-icon w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div id="comparison-table-container" class="comparison-table-container mt-8">
+                         <div class="overflow-x-auto">
+                            <table class="w-full text-left table-auto">
+                                <thead class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                                    <tr>
+                                        <th class="p-4 rounded-tl-lg">Feature</th>
+                                        <th class="text-center p-4">Starter Kit</th>
+                                        <th class="text-center p-4">Growth Engine</th>
+                                        <th class="text-center p-4">Brand Builder</th>
+                                        <th class="text-center p-4 rounded-tr-lg">Dominator Engine</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-slate-600 dark:text-slate-300">
+                                    <tr class="bg-slate-50 dark:bg-slate-900/50"><td class="p-4 font-bold text-blue-600 dark:text-blue-400" colspan="5">Core Production</td></tr>
+                                    <tr><td class="p-4">Main YouTube Videos /mo</td><td class="text-center p-4 font-semibold">1</td><td class="text-center p-4 font-semibold">4</td><td class="text-center p-4 font-semibold">4</td><td class="text-center p-4 font-semibold">4</td></tr>
+                                    <tr><td class="p-4">Reels/Shorts /mo</td><td class="text-center p-4">2</td><td class="text-center p-4">10</td><td class="text-center p-4">15+</td><td class="text-center p-4">15+</td></tr>
+                                    <tr><td class="p-4">Advanced Editing</td><td class="text-center p-4"><i data-lucide="minus" class="mx-auto w-5 h-5 text-slate-400 dark:text-slate-500"></i></td><td class="text-center p-4"><i data-lucide="minus" class="mx-auto w-5 h-5 text-slate-400 dark:text-slate-500"></i></td><td class="text-center p-4"><i data-lucide="check" class="mx-auto w-6 h-6 text-green-500"></i></td><td class="text-center p-4"><i data-lucide="check" class="mx-auto w-6 h-6 text-green-500"></i></td></tr>
+                                    
+                                    <tr class="bg-slate-50 dark:bg-slate-900/50"><td class="p-4 font-bold text-blue-600 dark:text-blue-400" colspan="5">Value-Added Assets</td></tr>
+                                    <tr><td class="p-4">Lesson Summary PDFs</td><td class="text-center p-4"><i data-lucide="minus" class="mx-auto w-5 h-5 text-slate-400 dark:text-slate-500"></i></td><td class="text-center p-4"><i data-lucide="check" class="mx-auto w-6 h-6 text-green-500"></i></td><td class="text-center p-4"><i data-lucide="check" class="mx-auto w-6 h-6 text-green-500"></i></td><td class="text-center p-4"><i data-lucide="check" class="mx-auto w-6 h-6 text-green-500"></i></td></tr>
+                                    <tr><td class="p-4">Custom Video Ad Creative</td><td class="text-center p-4"><i data-lucide="minus" class="mx-auto w-5 h-5 text-slate-400 dark:text-slate-500"></i></td><td class="text-center p-4"><i data-lucide="minus" class="mx-auto w-5 h-5 text-slate-400 dark:text-slate-500"></i></td><td class="text-center p-4"><i data-lucide="minus" class="mx-auto w-5 h-5 text-slate-400 dark:text-slate-500"></i></td><td class="text-center p-4"><i data-lucide="check" class="mx-auto w-6 h-6 text-green-500"></i></td></tr>
+
+                                    <tr class="bg-slate-50 dark:bg-slate-900/50"><td class="p-4 font-bold text-blue-600 dark:text-blue-400" colspan="5">Strategic Partnership</td></tr>
+                                    <tr><td class="p-4">Weekly Momentum Updates</td><td class="text-center p-4"><i data-lucide="minus" class="mx-auto w-5 h-5 text-slate-400 dark:text-slate-500"></i></td><td class="text-center p-4"><i data-lucide="check" class="mx-auto w-6 h-6 text-green-500"></i></td><td class="text-center p-4"><i data-lucide="check" class="mx-auto w-6 h-6 text-green-500"></i></td><td class="text-center p-4"><i data-lucide="check" class="mx-auto w-6 h-6 text-green-500"></i></td></tr>
+                                    <tr><td class="p-4">Monthly Impact Report</td><td class="text-center p-4"><i data-lucide="minus" class="mx-auto w-5 h-5 text-slate-400 dark:text-slate-500"></i></td><td class="text-center p-4"><i data-lucide="minus" class="mx-auto w-5 h-5 text-slate-400 dark:text-slate-500"></i></td><td class="text-center p-4"><i data-lucide="check" class="mx-auto w-6 h-6 text-green-500"></i></td><td class="text-center p-4"><i data-lucide="check" class="mx-auto w-6 h-6 text-green-500"></i></td></tr>
+                                    <tr><td class="p-4">Monthly Strategy Call</td><td class="text-center p-4"><i data-lucide="minus" class="mx-auto w-5 h-5 text-slate-400 dark:text-slate-500"></i></td><td class="text-center p-4"><i data-lucide="minus" class="mx-auto w-5 h-5 text-slate-400 dark:text-slate-500"></i></td><td class="text-center p-4"><i data-lucide="check" class="mx-auto w-6 h-6 text-green-500"></i></td><td class="text-center p-4"><i data-lucide="check" class="mx-auto w-6 h-6 text-green-500"></i></td></tr>
+                                    <tr><td class="p-4">Managed Ad Campaigns</td><td class="text-center p-4 rounded-bl-lg"><i data-lucide="minus" class="mx-auto w-5 h-5 text-slate-400 dark:text-slate-500"></i></td><td class="text-center p-4"><i data-lucide="minus" class="mx-auto w-5 h-5 text-slate-400 dark:text-slate-500"></i></td><td class="text-center p-4"><i data-lucide="minus" class="mx-auto w-5 h-5 text-slate-400 dark:text-slate-500"></i></td><td class="text-center p-4 rounded-br-lg"><i data-lucide="check" class="mx-auto w-6 h-6 text-green-500"></i></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Benefits Section -->
+        <section class="py-20 sm:py-28 px-4 bg-slate-100 dark:bg-slate-900 reveal">
+            <div class="text-center">
+                <h2 class="section-headline">The Freedom to Focus on What You Do Best</h2>
+                <p class="section-subheadline">When you partner with us, you're not just buying videos. You're buying back your time and peace of mind. Here is everything you no longer have to worry about.</p>
+            </div>
+            <div class="max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 text-left">
+                <div class="feature-card">
+                    <i data-lucide="scissors" class="w-10 h-10 text-blue-500 mb-4"></i>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Effortless Editing</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mt-2">Forget spending countless hours on complex software. We handle all post-production, from multi-camera editing to professional color grading and audio mastering.</p>
+                </div>
+                <div class="feature-card">
+                    <i data-lucide="video" class="w-10 h-10 text-blue-500 mb-4"></i>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Professional Recording</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mt-2">Step into our clean, air-conditioned studio and let us handle the technicals. Our professional lighting, audio, and camera setup ensures you look and sound your best, every time.</p>
+                </div>
+                <div class="feature-card">
+                    <i data-lucide="search" class="w-10 h-10 text-blue-500 mb-4"></i>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Expert SEO & Publishing</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mt-2">We handle the entire upload process for you, crafting compelling thumbnails, titles, and descriptions that are optimized to get your videos discovered by the right students.</p>
+                </div>
+                <div class="feature-card">
+                    <i data-lucide="wifi" class="w-10 h-10 text-blue-500 mb-4"></i>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Reliable Connectivity</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mt-2">Our studio is equipped with high-speed fiber internet, so you can host flawless, interruption-free Zoom classes or live streams without worrying about data costs or connection drops.</p>
+                </div>
+                <div class="feature-card">
+                    <i data-lucide="megaphone" class="w-10 h-10 text-blue-500 mb-4"></i>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Consistent Social Presence</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mt-2">We keep your brand active and engaging. Throughout the week, we will publish relevant Reels, Shorts, and posts to your social media channels to keep you in the media and top-of-mind.</p>
+                </div>
+                <div class="feature-card">
+                    <i data-lucide="sparkles" class="w-10 h-10 text-blue-500 mb-4"></i>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Total Peace of Mind</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mt-2">From strategy to publishing, we manage the entire process. You get all the benefits of a professional online presence with none of the stress. You just show up and teach.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- AI Idea Generator Section -->
+        <section class="py-20 sm:py-28 px-4 reveal">
+            <div class="text-center max-w-2xl mx-auto">
+                <i data-lucide="lightbulb" class="w-12 h-12 text-blue-500 mx-auto mb-4"></i>
+                <h2 class="section-headline">Stuck for Ideas?</h2>
+                <p class="section-subheadline">Use our AI-powered generator to discover engaging video topics your students are searching for. Enter a subject to get started.</p>
+                <div class="mt-8 flex gap-2 max-w-lg mx-auto">
+                    <input id="ai-prompt-input" type="text" placeholder="e.g., 'A-Level Chemistry'" class="w-full p-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-blue-500 outline-none">
+                    <button id="ai-generate-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors flex-shrink-0">Generate</button>
+                </div>
+                <div id="ai-results-container" class="mt-8 text-left space-y-3">
+                    <!-- AI results will be injected here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About + FAQ Section -->
+        <section id="contact" class="py-20 sm:py-28 px-4 bg-slate-100 dark:bg-slate-900 reveal">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="section-headline">Ready to Build Your Online Presence?</h2>
+                <p class="section-subheadline">Let's have a chat about your vision. Our team is ready to answer your questions and explore how we can be the right partner to help you grow.</p>
+                 
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Randunu Yasarathna -->
+                    <a href="https://wa.me/94703734000?text=Hi%2C%20Randunu.%20I'd%20like%20to%20chat%20about%20Educator%20Studios." target="_blank" class="flex flex-col items-center gap-4 group">
+                        <img src="images/randunu.jpg" alt="Randunu Yasarathna" class="w-32 h-32 rounded-full flex-shrink-0 object-cover">
+                        <div>
+                            <p class="font-bold text-lg text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Randunu Yasarathna</p>
+                            <p class="text-sm text-blue-600 dark:text-blue-400 font-semibold">Founder & Lead Producer</p>
+                        </div>
+                    </a>
+                    <!-- Rusiru Bandara Herath -->
+                     <a href="https://wa.me/94702328033?text=Hi%2C%20Rusiru.%20I%20found%20your%20contact%20on%20the%20Educator%20Studios%20website%20and%20would%20like%20to%20ask%20a%20question." target="_blank" class="flex flex-col items-center gap-4 group">
+                        <img src="images/rusiru.jpg" alt="Rusiru Bandara Herath" class="w-32 h-32 rounded-full flex-shrink-0 object-cover">
+                        <div>
+                            <p class="font-bold text-lg text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Rusiru Bandara Herath</p>
+                            <p class="text-sm text-blue-600 dark:text-blue-400 font-semibold">Co-Founder & Investor</p>
+                        </div>
+                    </a>
+                    <!-- Menaka Balasooriya -->
+                    <a href="https://wa.me/94701471330?text=Hi%2C%20Menaka.%20I%20found%20your%20contact%20on%20the%20Educator%20Studios%20website%20and%20had%20a%20technical%20question." target="_blank" class="flex flex-col items-center gap-4 group">
+                        <img src="images/menaka.jpg" alt="Menaka Balasooriya" class="w-32 h-32 rounded-full flex-shrink-0 object-cover">
+                        <div>
+                            <p class="font-bold text-lg text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Menaka Balasooriya</p>
+                            <p class="text-sm text-blue-600 dark:text-blue-400 font-semibold">Co-Founder & Technical Partner</p>
+                        </div>
+                    </a>
+                </div>
+
+                 <div class="mt-16 max-w-2xl mx-auto">
+                    <h3 class="text-2xl font-bold mb-6 text-slate-900 dark:text-white">Frequently Asked Questions</h3>
+                    <div id="faq-container" class="space-y-4">
+                        <!-- FAQ Item 1 -->
+                        <div class="faq-item bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg">
+                            <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                                <span class="text-lg font-semibold text-slate-900 dark:text-white">Do I really own the final videos?</span>
+                                <i data-lucide="chevron-down" class="faq-icon w-5 h-5 transition-transform text-slate-500"></i>
+                            </button>
+                            <div class="faq-answer text-slate-600 dark:text-slate-400 text-left">
+                                <p>Yes, 100%. Upon final payment for the service period, you retain full ownership and copyright of all final, delivered content. You are free to use it however you wish on any platform, forever.</p>
+                            </div>
+                        </div>
+                        <!-- FAQ Item 2 -->
+                         <div class="faq-item bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg">
+                            <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                                <span class="text-lg font-semibold text-slate-900 dark:text-white">What if I'm nervous on camera?</span>
+                                <i data-lucide="chevron-down" class="faq-icon w-5 h-5 transition-transform text-slate-500"></i>
+                            </button>
+                            <div class="faq-answer text-slate-600 dark:text-slate-400 text-left">
+                                <p>That's completely normal! In fact, we expect it. Part of our process is dedicated on-camera coaching. We'll guide you through techniques to feel confident and deliver your message naturally. Our job is to make you look and feel like a pro.</p>
+                            </div>
+                        </div>
+                        <!-- FAQ Item 3 -->
+                        <div class="faq-item bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg">
+                            <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                                <span class="text-lg font-semibold text-slate-900 dark:text-white">What is the "Growth Engine" package?</span>
+                                <i data-lucide="chevron-down" class="faq-icon w-5 h-5 transition-transform text-slate-500"></i>
+                            </button>
+                            <div class="faq-answer text-slate-600 dark:text-slate-400 text-left">
+                                <p>It's our most popular, best-value package. It's designed for serious educators who want to build a strong brand through consistent, weekly, high-quality content. It includes everything you need for sustained organic growth on YouTube and social media.</p>
+                            </div>
+                        </div>
+                         <!-- FAQ Item 4 -->
+                        <div class="faq-item bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg">
+                            <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                                <span class="text-lg font-semibold text-slate-900 dark:text-white">How long does a typical session take?</span>
+                                <i data-lucide="chevron-down" class="faq-icon w-5 h-5 transition-transform text-slate-500"></i>
+                            </button>
+                            <div class="faq-answer text-slate-600 dark:text-slate-400 text-left">
+                                <p>A standard recording session for one main video is booked for about an hour. This gives us plenty of time for setup, coaching, recording with retakes, and wrapping up without ever feeling rushed.</p>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </section>
+        
+        <!-- Additional Services Section -->
+        <section class="py-20 sm:py-28 px-4 bg-slate-100 dark:bg-slate-900 reveal">
+            <div class="text-center max-w-2xl mx-auto">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Need More Than Just Videos?</h2>
+                <p class="mt-4 text-slate-600 dark:text-slate-400">Our partnership extends beyond the screen. As an Educator Studios client, you have access to our professional graphic design services for any other materials you need to support your teaching.</p>
+                <div class="mt-8 flex flex-wrap justify-center gap-4 text-lg font-medium">
+                    <span class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-4 py-2 rounded-full">Tute & Note Design</span>
+                    <span class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-4 py-2 rounded-full">Promotional Posters</span>
+                    <span class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-4 py-2 rounded-full">Event Banners</span>
+                </div>
+                 <p class="mt-6 text-slate-500">Available at a reasonable, client-exclusive rate. Just ask us during your consultation.</p>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Floating WhatsApp CTA -->
+    <a href="https://wa.me/94703734000?text=Hi%2C%20Randunu.%20I'm%20interested%20in%20Educator%20Studios%20and%20would%20like%20to%20book%20a%20free%20consultation." target="_blank" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-transform hover:scale-110 z-40">
+        <i data-lucide="message-circle" class="w-8 h-8"></i>
+    </a>
+    
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-slate-500 text-sm">
+            <p>© 2025 Educator Studios | Kandy, Sri Lanka</p>
+        </div>
+    </footer>
+
+<script>
+    lucide.createIcons();
+
+    // --- Theme Toggler ---
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const docElement = document.documentElement;
+
+    const applyTheme = (theme) => {
+        if (theme === 'dark') {
+            docElement.classList.add('dark');
+            themeIcon.setAttribute('data-lucide', 'moon');
+        } else {
+            docElement.classList.remove('dark');
+            themeIcon.setAttribute('data-lucide', 'sun');
+        }
+        lucide.createIcons();
+    };
+
+    const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    applyTheme(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+        const newTheme = docElement.classList.contains('dark') ? 'light' : 'dark';
+        localStorage.setItem('theme', newTheme);
+        applyTheme(newTheme);
+    });
+
+    // --- Scroll Animations ---
+    const reveal = () => {
+        const reveals = document.querySelectorAll('.reveal');
+        reveals.forEach(el => {
+            const windowHeight = window.innerHeight;
+            const elementTop = el.getBoundingClientRect().top;
+            const elementVisible = 100;
+            if (elementTop < windowHeight - elementVisible) {
+                el.classList.add('active');
+            }
+        });
+    };
+    window.addEventListener('scroll', reveal);
+    reveal();
+
+    // --- Collapsible Comparison Table ---
+    const comparisonToggle = document.getElementById('comparison-toggle');
+    const comparisonTableContainer = document.getElementById('comparison-table-container');
+    comparisonToggle.addEventListener('click', () => {
+        comparisonToggle.classList.toggle('open');
+        comparisonTableContainer.classList.toggle('open');
+        const text = comparisonToggle.querySelector('span');
+        text.textContent = comparisonTableContainer.classList.contains('open') ? 'Hide Full Comparison' : 'See Full Feature Comparison';
+    });
+
+    // --- Dynamic FAQ Section ---
+    const faqContainer = document.getElementById('faq-container');
+    if (faqContainer) {
+        const questionButtons = faqContainer.querySelectorAll('.faq-question');
+        questionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const wasOpen = item.classList.contains('open');
+
+                faqContainer.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+
+                if (!wasOpen) {
+                    item.classList.add('open');
+                }
+            });
+        });
+    }
+    
+    // --- Hero Gradient Effect ---
+    const heroGradient = document.getElementById('hero-gradient');
+    if (heroGradient) {
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            const isDark = document.documentElement.classList.contains('dark');
+            const color1 = isDark ? 'rgba(17, 24, 39, 0)' : 'rgba(248, 250, 252, 0)';
+            const color2 = isDark ? 'rgba(30, 41, 59, 0.8)' : 'rgba(226, 232, 240, 0.8)';
+            const color3 = isDark ? '#020617' : '#f8fafc';
+            heroGradient.style.background = `radial-gradient(circle at ${x*100}% ${y*100}%, ${color1} 0%, ${color2} 30%, ${color3} 70%)`;
+        });
+    }
+</script>
+
+</body>
+</html>
+
